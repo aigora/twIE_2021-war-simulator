@@ -1,11 +1,15 @@
-# [Título del trabajo]
+# [War simulator]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+[Consiste en realizar un programa al que tu le metes el número de participantes deseado y el programa vaya eliminandolos aleatoriamente uno a uno.]
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+[
+Nombre y apellidos:Daniel Garcia Arana; @DanielGarciaArana
+Nombre y apellidos:Pablo Iglesias Caballero; Usuario Github: ?
+Nombre y apellidos:Carlos Mirón Diaz; Usuario Github: ?.
+]
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+[Crear un programa interactivo que realice operciones aleatorias.]
