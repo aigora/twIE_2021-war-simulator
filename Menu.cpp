@@ -9,6 +9,7 @@ int main()
 
 int menu()
 {
+	//Aqui iria un logo
 	printf("Eliga 1 entre las siguentes opciones(Introduzca el numero): \n");
 	int opcion;
 	printf("1.Manual simple(Se introducen manualmente los nombre)(todas las rondas se llevan acabo de manera aleatoria) \n");
@@ -20,20 +21,26 @@ int menu()
 		scanf("%i", &opcion);
 		switch (opcion)
 		{
+		//De momento solo imprime el número introducido.
+		//La idea es que inicie la funcion modox() que todavia no se ha escrito.
 		case 1:
 			printf("Has elegido %i \n", opcion);
+			//modo1();
 			return false;
 			break;
 		case 2:
 			printf("Has elegido %i \n", opcion);
+			//modo2;
 			return false;
 			break;
 		case 3:
 			printf("Has elegido %i \n", opcion);
+			//modo3;
 			return false;
 			break;
 		case 4:
 			printf("Has elegido %i \n", opcion);
+			//modo4()
 			return false;
 			break;
 		default:
