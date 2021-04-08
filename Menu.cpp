@@ -7,6 +7,7 @@ int main()
 	menu();
 }
 
+//la funcion menu imprime el menu y le al jugador opciones a elegir
 int menu()
 {
 	//Aqui iria un logo
@@ -22,25 +23,20 @@ int menu()
 		switch (opcion)
 		{
 		//De momento solo imprime el número introducido.
-		//La idea es que inicie la funcion modox() que todavia no se ha escrito.
 		case 1:
 			printf("Has elegido %i \n", opcion);
-			//modo1();
 			return false;
 			break;
 		case 2:
 			printf("Has elegido %i \n", opcion);
-			//modo2;
 			return false;
 			break;
 		case 3:
 			printf("Has elegido %i \n", opcion);
-			//modo3;
 			return false;
 			break;
 		case 4:
 			printf("Has elegido %i \n", opcion);
-			//modo4()
 			return false;
 			break;
 		default:
@@ -48,5 +44,6 @@ int menu()
 			printf(" no es una opcion valida. Recuerda que debes introducir 1,2,3 o 4. \n");
 		}
 	}
+	//devuelve la opcion elegida
 	return opcion;
 }
