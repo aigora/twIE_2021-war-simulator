@@ -7,6 +7,12 @@ struct bots{
 	char nombre[100]; //Nombre y apellido
 	int kills; //Las bajas que lleva. Inicialmente son 0.
 };
+//Estructura fechas:
+struct fecha{
+	int year; //Año
+	int mes;
+	int dia; 
+};
 
 int menu();
 
