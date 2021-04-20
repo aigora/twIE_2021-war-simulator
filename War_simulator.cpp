@@ -1,5 +1,13 @@
 #include <stdio.h>
 
+//Estructuras:
+
+//Estructura bots:
+struct bots{
+	char nombre[100]; //Nombre y apellido
+	int kills; //Las bajas que lleva. Inicialmente son 0.
+};
+
 int menu();
 
 int main()
@@ -7,6 +15,7 @@ int main()
 	menu();
 }
 
+//EL MENÚ
 //la funcion menu imprime el menu y le al jugador opciones a elegir
 int menu()
 {
@@ -47,3 +56,5 @@ int menu()
 	//devuelve la opcion elegida
 	return opcion;
 }
+
+
