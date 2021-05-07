@@ -9,12 +9,13 @@ struct bots{
 };
 //Estructura fechas:
 struct fecha{
-	int year; //Año
+	int year; //AÃ±o
 	int mes;
 	int dia; 
 };
 
 int menu();
+int logo();
 
 int main()
 {
@@ -22,7 +23,7 @@ int main()
 	menu();
 }
 
-//EL MENÚ
+//EL MENÃš
 //la funcion menu imprime el menu y le al jugador opciones a elegir
 int menu()
 {
@@ -40,7 +41,7 @@ int menu()
 		scanf("%i", &opcion);
 		switch (opcion)
 		{
-		//De momento solo imprime el número introducido.
+		//De momento solo imprime el nÃºmero introducido.
 		case 1:
 			printf("Has elegido %i \n", opcion);
 			return repetir=0;
