@@ -16,6 +16,8 @@ struct fecha{
 
 int menu();
 int logo();
+int num_aleatorio(int num);
+int kill(struct bots bot1, struct bots bot2);
 
 int main()
 {
@@ -83,4 +85,30 @@ int logo()
 	printf("  ***************************************************************************** \n");
 	printf("\n");
 	printf("\n");
+}
+
+//Esta función devuelve un número aleatorio entre del 1 a num
+int num_aleatorio(int num)
+{
+	int n;
+	srand(time(NULL));
+	n = rand() % num + 1;
+	return n;
+}
+
+int kill(struct bots bot1, struct bots bot2)
+{
+	//cada baja suma una probabilidad de 30 puntos
+	//realmente el número muerte indica quien se salva
+	int muerte;
+	muerte = num_aleatorio(200+bot1.kills*30+bot2.kills*30);
+	if (muerte<(100+bot1.kills*30))
+	{
+		//si muerte pertenece a bot1 muere bot2
+		printf("%c ha matadao a %c. \n",bot1.nombre,bot2.nombre);
+	}
+	else 
+	{
+		printf("%c ha matadao a %c. \n",bot2.nombre,bot1.nombre);
+	}
 }
