@@ -28,6 +28,7 @@ int num_aleatorio(int num);
 int kill(bots bot1, bots bot2);
 int congelar_tiempo(int tiempo);
 int leer_nombres();
+int escribir_nombres(int num_nombres);
 
 int main()
 {
@@ -154,6 +155,30 @@ int leer_nombres()
 		{
 		    printf("Nombre %i: %s\n", i+1, nombres[i].nombre);
 		    i++;
+		}
+	}
+}
+
+//Esta función pregunta al usuario los nombres que quiere introducir y los copia en un fichero
+int escribir_nombres(int num_nombres)
+{
+	int i;
+	const b = num_nombres;
+	bots nombres[b];
+	FILE *fnombres_introducidos;
+	fnombres_introducidos = fopen("fnombres_introducidos.txt","w");
+	if (fnombres_introducidos == NULL)
+	{
+		printf("Error al abrir el fichero.\n");
+		return -1;
+	}
+	else
+	{
+		for (i=0;i<num_nombres;i++)
+		{
+			printf("Introduce nombre %i: ",i+1);
+			scanf("%s",&nombres[i].nombre);
+			fprintf(fnombres_introducidos,"%s \n",nombres[i].nombre);
 		}
 	}
 }
