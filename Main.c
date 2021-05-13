@@ -149,6 +149,7 @@ int leer_nombres()
 	}
 	else
 	{
+		printf("Bots vivos: \n");
 		while(fscanf(fbots_vivos, "%[^\n]\n", nombres[i].nombre) != EOF)
 		{
 		    printf("Nombre %i: %s\n", i+1, nombres[i].nombre);
