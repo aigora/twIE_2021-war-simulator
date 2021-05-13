@@ -10,10 +10,10 @@
 //Estructuras:
 
 //Estructura bots:
-struct bots{
-	char nombre[100]; //Nombre y apellido
+typedef struct{
+	char nombre[30]; //Nombre y apellido
 	int kills; //Las bajas que lleva. Inicialmente son 0.
-};
+}bots;
 //Estructura fechas:
 struct fecha{
 	int year; //Año
@@ -24,8 +24,9 @@ struct fecha{
 int menu();
 int logo();
 int num_aleatorio(int num);
-int kill(struct bots bot1, struct bots bot2);
+int kill(bots bot1, bots bot2);
 int congelar_tiempo(int tiempo);
+int leer_nombres();
 
 int main()
 {
@@ -103,7 +104,7 @@ int num_aleatorio(int num)
 	return n;
 }
 
-int kill(struct bots bot1, struct bots bot2)
+int kill(bots bot1, bots bot2)
 {
 	//cada baja suma una probabilidad de 30 puntos
 	//realmente el número muerte indica quien se salva
@@ -131,4 +132,26 @@ int congelar_tiempo(int tiempo)
 		//Sleep(tiempo);
 		//system("cls");
 	//}
+}
+
+//Esta función lee los nombres de los bots vivivos restantes
+int leer_nombres()
+{
+	int i = 0;
+	bots nombres[N];
+	FILE *fbots_vivos;
+	fbots_vivos = fopen("fbots_vivos.txt", "r");
+	if (fbots_vivos == NULL)
+	{// Si el resultado es NULL mensaje de error
+		printf("Error al abrir el fichero.\n");
+		return -1;
+	}
+	else
+	{
+		while(fscanf(fbots_vivos, "%[^\n]\n", nombres[i].nombre) != EOF)
+		{
+		    printf("Nombre %i: %s\n", i+1, nombres[i].nombre);
+		    i++;
+		}
+	}
 }
