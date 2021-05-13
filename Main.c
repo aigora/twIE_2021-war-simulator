@@ -4,6 +4,7 @@
 #include <string.h> 
 #include <windows.h>
 
+#define N 5
 #define T 30000
 //T es el tiempo que dejamos entre cada muerte(30s)
 
