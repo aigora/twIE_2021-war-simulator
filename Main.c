@@ -37,7 +37,6 @@ int main()
 //la funcion menu imprime el menu y le al jugador opciones a elegir
 int menu()
 {
-	//Aqui iria un logo
 	//No me deja hacer con true/false asi que repetir hace de true
 	int repetir=1;
 	printf("Eliga 1 entre las siguentes opciones(Introduzca el numero): \n");
