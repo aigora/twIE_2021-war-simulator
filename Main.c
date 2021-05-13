@@ -2,6 +2,10 @@
 #include <time.h>
 #include <stdlib.h> 
 #include <string.h> 
+#include <windows.h>
+
+#define T 30000
+//T es el tiempo que dejamos entre cada muerte(30s)
 
 //Estructuras:
 
@@ -21,6 +25,7 @@ int menu();
 int logo();
 int num_aleatorio(int num);
 int kill(struct bots bot1, struct bots bot2);
+int congelar_tiempo(int tiempo);
 
 int main()
 {
@@ -114,4 +119,17 @@ int kill(struct bots bot1, struct bots bot2)
 	{
 		printf("%c ha matadao a %c. \n",bot2.nombre,bot1.nombre);
 	}
+}
+
+//Esta función congela el programa durante un tiempo T
+int congelar_tiempo(int tiempo)
+{
+	int i;
+	Sleep(tiempo);
+	//for (i=0;i<100;i++)
+	//{
+		//printf("Cargando...%i /%",i);
+		//Sleep(tiempo);
+		//system("cls");
+	//}
 }
