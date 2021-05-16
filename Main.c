@@ -32,9 +32,9 @@ int escribir_nombres(int num_nombres);
 
 int main()
 {
+	int num_bots;
 	logo();
 	menu();
-	int num_bots;
 	while (1)
 	{
 		printf("Introduzca el numero de bots (max 30): ");
