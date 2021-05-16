@@ -115,11 +115,11 @@ int kill(bots bot1, bots bot2)
 	if (muerte<(100+bot1.kills*30))
 	{
 		//si muerte pertenece a bot1 muere bot2
-		printf("%c ha matadao a %c. \n",bot1.nombre,bot2.nombre);
+		printf("%s ha matadao a %s. \n",bot1.nombre,bot2.nombre);
 	}
 	else 
 	{
-		printf("%c ha matadao a %c. \n",bot2.nombre,bot1.nombre);
+		printf("%s ha matadao a %s. \n",bot2.nombre,bot1.nombre);
 	}
 }
 
