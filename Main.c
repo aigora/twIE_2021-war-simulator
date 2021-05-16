@@ -182,3 +182,60 @@ int escribir_nombres(int num_nombres)
 		}
 	}
 }
+
+int manual_simple(int num_bots)
+{
+	//Bots vivos irá disminuyendo a medida que vayan muriendo
+	//Bots total se mantendrá constante para que los vectores no den problemas
+	int num1,num2,num_muertes,i,bot_vivo,ii;
+	num_muertes = 0;
+	const b = num_bots;	
+	bots bot[b];
+	for (i=0;i<num_bots;i++)
+	{
+		printf("Introduce nombre numero %i: ",i+1);
+		scanf("%30s", bot[i].nombre);
+		bot[i].kills = 0;
+	}
+	for (i=0;i<num_bots-1;i++)
+	{
+		num1 = num_aleatorio(num_bots-num_muertes);
+		num2 = num_aleatorio(num_bots-num_muertes);
+		//Para que num1 y num2 sean distintos
+		while (num1==num2)
+		{
+			num2 = num_aleatorio(num_bots-num_muertes);
+		}
+		bot_vivo = kill(bot[num1-1],bot[num2-1]);
+		num_muertes += 1;
+		if (bot_vivo == 1)
+		{
+			bot[num1-1].kills += 1;
+			for (ii=0;ii<num_bots-num2;ii++)
+			{
+				strcpy(bot[num2+ii-1].nombre, bot[num2+ii].nombre);
+				bot[num2+ii-1].kills = bot[num2+ii].kills;
+			}
+		}
+		else
+		{
+			bot[num2-1].kills += 1;
+			for (ii=0;ii<num_bots-num1;ii++)
+			{
+				strcpy(bot[num1+ii-1].nombre, bot[num1+ii].nombre);
+				bot[num1+ii-1].kills = bot[num1+ii].kills;
+			}
+		}
+		printf("Bots restantes: ");
+		for (ii=0;ii<num_bots-num_muertes;ii++)
+		{
+			printf("%s, ",bot[ii].nombre);
+		}
+		printf("\n");
+		if (i == num_bots-2)
+		{
+			printf("%s ha ganado con %d bajas",bot[0].nombre,bot[0].kills);
+		}
+		congelar_tiempo(T);
+	}
+}
