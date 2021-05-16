@@ -34,6 +34,29 @@ int main()
 {
 	logo();
 	menu();
+	int num_bots;
+	while (1)
+	{
+		printf("Introduzca el numero de bots (max 30): ");
+		scanf("%i",&num_bots);
+		if (num_bots>1)
+		{
+			if (num_bots<31)
+			{
+				break;
+			}
+			else
+			{
+				printf("Error, debes introducir un numero entero mayor que 1 y menor que 31. \n");	
+				printf("%d es mayor que 30. \n",num_bots);	
+			}
+		}
+		else
+		{
+			printf("Error, debes introducir un numero entero mayor que 1 y menor que 31. \n");
+			printf("%d es menor que 2. \n",num_bots);
+		}
+	}
 }
 
 //EL MENÚ
