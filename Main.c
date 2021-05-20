@@ -242,6 +242,7 @@ int manual_simple(int num_bots)
 	//Bots total se mantendrá constante para que los vectores no den problemas
 	FILE *fbots_vivos;
 	FILE *fbajas_bots;
+	//Los bots restantes y sus respectivas bajas se almacenan en 2 ficheros
 	fbots_vivos = fopen("fbots_vivos.txt","w");
 	fbajas_bots = fopen("fbajas_bots.txt","w");
 	int num1,num2,num_muertes,i,bot_vivo,ii;
@@ -302,6 +303,7 @@ int manual_simple(int num_bots)
 		for (ii=0;ii<num_bots-num_muertes;ii++)
 		{
 			printf("%s, ",bot[ii].nombre);
+			//Actualizamos la lista de bajas y de bots restantes
 			fprintf(fbots_vivos,"%s \n",bot[ii].nombre);
 			fprintf(fbajas_bots,"%i \n",bot[ii].kills);
 		}
