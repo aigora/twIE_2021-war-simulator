@@ -245,11 +245,13 @@ int manual_simple(int num_bots)
 	fbots_vivos = fopen("fbots_vivos.txt","w");
 	fbajas_bots = fopen("fbajas_bots.txt","w");
 	int num1,num2,num_muertes,i,bot_vivo,ii;
+	//num1 y num2 van siendo elegidos aleatoriamente por la función num_aleatorio y indican que 2 bots se enfrentan
 	num_muertes = 0;
 	const b = num_bots;	
 	bots bot[b];
 	for (i=0;i<num_bots;i++)
 	{
+		//Aquí se crean los bots
 		printf("Introduce nombre numero %i: ",i+1);
 		scanf("%30s", bot[i].nombre);
 		bot[i].kills = 0;
@@ -258,6 +260,7 @@ int manual_simple(int num_bots)
 	}
 	fclose(fbots_vivos);
 	fclose(fbajas_bots);
+	//Este bucle va enfrentando los bots uno a uno hasta que solo quede uno(el ganador)
 	for (i=0;i<num_bots-1;i++)
 	{
 		num1 = num_aleatorio(num_bots-num_muertes);
@@ -267,11 +270,16 @@ int manual_simple(int num_bots)
 		{
 			num2 = num_aleatorio(num_bots-num_muertes);
 		}
+		//Se pasa la función kill con los bots elegidos aleatoriamente previamente
 		bot_vivo = kill(bot[num1-1],bot[num2-1]);
+		//bot_vivo es el numero del bot que ha ganado
 		num_muertes += 1;
 		if (bot_vivo == 1)
 		{
+			//Al haber ganado su bajas aumentan en +1
 			bot[num1-1].kills += 1;
+			//A continuación borramos de la lista al bot que ha muerto
+			//Para eso disminuimos en 1 la posición de todos los bots a partir del eliminado
 			for (ii=0;ii<num_bots-num2;ii++)
 			{
 				strcpy(bot[num2+ii-1].nombre, bot[num2+ii].nombre);
@@ -289,6 +297,7 @@ int manual_simple(int num_bots)
 		}
 		fbots_vivos = fopen("fbots_vivos.txt","w");
 		fbajas_bots = fopen("fbajas_bots.txt","w");
+		//Indicamos que bots siguen vivos
 		printf("Bots restantes: ");
 		for (ii=0;ii<num_bots-num_muertes;ii++)
 		{
@@ -303,6 +312,7 @@ int manual_simple(int num_bots)
 		{
 			printf("%s ha ganado con %d bajas",bot[0].nombre,bot[0].kills);
 		}
+		//Congelamos el programa un tiempo T para que no se acabe instantáneamente
 		congelar_tiempo(T);
 	}
 }
