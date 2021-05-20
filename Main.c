@@ -72,7 +72,6 @@ int main()
 			//manual_complex(num_bots);
 			break;
 		case 4:
-			printf("Todo ok \n");
 			automatico_complex(num_bots);
 			break;
 		case 5:
