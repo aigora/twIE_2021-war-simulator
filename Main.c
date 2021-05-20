@@ -239,7 +239,9 @@ int manual_simple(int num_bots)
 	//Bots vivos irá disminuyendo a medida que vayan muriendo
 	//Bots total se mantendrá constante para que los vectores no den problemas
 	FILE *fbots_vivos;
+	FILE *fbajas_bots;
 	fbots_vivos = fopen("fbots_vivos.txt","w");
+	fbajas_bots = fopen("fbajas_bots.txt","w");
 	int num1,num2,num_muertes,i,bot_vivo,ii;
 	num_muertes = 0;
 	const b = num_bots;	
@@ -250,8 +252,10 @@ int manual_simple(int num_bots)
 		scanf("%30s", bot[i].nombre);
 		bot[i].kills = 0;
 		fprintf(fbots_vivos,"%s \n",bot[i].nombre);
+		fprintf(fbajas_bots,"0 \n");
 	}
 	fclose(fbots_vivos);
+	fclose(fbajas_bots);
 	for (i=0;i<num_bots-1;i++)
 	{
 		num1 = num_aleatorio(num_bots-num_muertes);
@@ -282,13 +286,16 @@ int manual_simple(int num_bots)
 			}
 		}
 		fbots_vivos = fopen("fbots_vivos.txt","w");
+		fbajas_bots = fopen("fbajas_bots.txt","w");
 		printf("Bots restantes: ");
 		for (ii=0;ii<num_bots-num_muertes;ii++)
 		{
 			printf("%s, ",bot[ii].nombre);
 			fprintf(fbots_vivos,"%s \n",bot[ii].nombre);
+			fprintf(fbajas_bots,"%i \n",bot[ii].kills);
 		}
 		fclose(fbots_vivos);
+		fclose(fbajas_bots);
 		printf("\n");
 		if (i == num_bots-2)
 		{
