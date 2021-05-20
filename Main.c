@@ -29,6 +29,8 @@ int kill(bots bot1, bots bot2);
 int congelar_tiempo(int tiempo);
 int leer_nombres();
 int escribir_nombres(int num_nombres);
+int manual_simple(int num_bots);
+int automatico_complex(int num_bots);
 
 int main()
 {
