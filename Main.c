@@ -2,11 +2,10 @@
 #include <time.h>
 #include <stdlib.h> 
 #include <string.h> 
-#include <windows.h>
 
 #define N 30
-#define T 30000
-//T es el tiempo que dejamos entre cada muerte(30s)
+#define T 15
+//T es el tiempo que dejamos entre cada muerte(15s)
 
 //Estructuras:
 
@@ -178,14 +177,13 @@ int kill(bots bot1, bots bot2)
 //Esta función congela el programa durante un tiempo T
 int congelar_tiempo(int tiempo)
 {
-	int i;
-	Sleep(tiempo);
-	//for (i=0;i<100;i++)
-	//{
-		//printf("Cargando...%i /%",i);
-		//Sleep(tiempo);
-		//system("cls");
-	//}
+	// Converting time into milli_seconds
+    	int milli_seconds = 1000 * tiempo;
+   	 // Storing start time
+    	clock_t start_time = clock();
+	// looping till required time is not achieved
+    	while (clock() < start_time + milli_seconds)
+        ;
 }
 
 //Esta función lee los nombres de los bots vivivos restantes
