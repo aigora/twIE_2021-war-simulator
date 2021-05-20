@@ -76,7 +76,8 @@ int main()
 			automatico_complex(num_bots);
 			break;
 		case 5:
-			continuar_partida();
+			//continuar_partida();
+			break;
 	}
 	return 0;
 }
