@@ -32,9 +32,10 @@ int escribir_nombres(int num_nombres);
 
 int main()
 {
-	int num_bots;
+	int opcion,num_bots;
 	logo();
-	menu();
+	opcion = menu();
+	printf("\n");
 	while (1)
 	{
 		printf("Introduzca el numero de bots (max 30): ");
@@ -57,13 +58,31 @@ int main()
 			printf("%d es menor que 2. \n",num_bots);
 		}
 	}
+	switch (opcion)
+	{
+		case 1:
+			manual_simple(num_bots);
+			break;
+		case 2:
+			//automatico_simple(num_bots);
+			break;
+		case 3:
+			//manual_complex(num_bots);
+			break;
+		case 4:
+			printf("Todo ok \n");
+			automatico_complex(num_bots);
+			break;
+		case 5:
+			continuar_partida();
+	}
+	return 0;
 }
 
 //EL MENÚ
 //la funcion menu imprime el menu y le al jugador opciones a elegir
 int menu()
 {
-	//No me deja hacer con true/false asi que repetir hace de true
 	int repetir=1;
 	printf("Eliga 1 entre las siguentes opciones(Introduzca el numero): \n");
 	int opcion;
@@ -71,6 +90,7 @@ int menu()
 	printf("2.Automatica simple(Solo introduces un nombre y el resto son puestos por el pc)(todas las rondas se llevan acabo de manera aleatoria)  \n");
 	printf("3.Manual complex(Se introducen manualmente los nombre)(El usuario elige en cada ronda que 2 bots se enfrentan) \n");
 	printf("4.Automatica complex(Solo introduces un nombre y el resto son puestos por el pc)(El usuario elige en cada ronda que 2 bots se enfrentan)  \n");
+	printf("5.Continuar la partida anterior. \n");
 	while (repetir=1)
 	{
 		scanf("%i", &opcion);
@@ -78,20 +98,24 @@ int menu()
 		{
 		//De momento solo imprime el número introducido.
 		case 1:
-			printf("Has elegido %i \n", opcion);
-			return repetir=0;
+			return opcion;
+			repetir=0;
 			break;
 		case 2:
-			printf("Has elegido %i \n", opcion);
-			return repetir=0;
+			return opcion;
+			repetir=0;
 			break;
 		case 3:
-			printf("Has elegido %i \n", opcion);
-			return repetir=0;
+			return opcion;
+			repetir=0;
 			break;
 		case 4:
-			printf("Has elegido %i \n", opcion);
-			return repetir=0;
+			return opcion;
+			repetir=0;
+			break;
+		case 5:
+			return opcion;
+			repetir=0;
 			break;
 		default:
 			printf("%i", opcion);
