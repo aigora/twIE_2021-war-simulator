@@ -149,7 +149,6 @@ int logo()
 int num_aleatorio(int num)
 {
 	int n;
-	srand(time(NULL));
 	n = rand() % num + 1;
 	return n;
 }
