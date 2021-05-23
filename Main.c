@@ -33,9 +33,23 @@ int automatico_complex(int num_bots);
 
 int main()
 {
-	int opcion,num_bots;
+	FILE *fopcion;
+	int opcion,num_bots,opc_previa;
 	logo();
 	opcion = menu();
+	if (opcion == 5)
+	{
+		fopcion = fopen("fopcion.txt","r");
+		fscanf(fopcion,"%i",&opc_previa);
+		fclose(fopcion);
+		continuar_partida(opc_previa);
+	}
+	else
+	{
+		fopcion = fopen("fopcion.txt","w");
+		fprintf(fopcion,"%d",opcion);
+		fclose(fopcion);
+	}
 	printf("\n");
 	while (1)
 	{
@@ -646,6 +660,7 @@ int continuar_partida(int prev)
 			if (i == num_bots-2)
 			{
 				printf("%s ha ganado con %d bajas",bot[0].nombre,bot[0].kills);
+				congelar_tiempo(30000);
 			}
 		}
 	}
