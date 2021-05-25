@@ -29,7 +29,8 @@ int congelar_tiempo(int tiempo);
 int leer_nombres();
 int escribir_nombres(int num_nombres);
 int manual_simple(int num_bots);
-int manual_comple(int num_bots);
+int automatico_simple(int num_bots);
+int manual_complex(int num_bots);
 int automatico_complex(int num_bots);
 
 int main()
