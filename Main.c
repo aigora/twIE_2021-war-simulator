@@ -332,7 +332,7 @@ int manual_simple(int num_bots)
 	}
 }
 
-
+//Introduces la función aquí
 
 int manual_complex(int num_bots)
 {
