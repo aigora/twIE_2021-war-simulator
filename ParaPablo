@@ -34,6 +34,9 @@ int automatico_complex(int num_bots);
 int main()
 {
 	FILE *fopcion;
+	FILE *fnombres_auto;
+	fnombres_auto = fopen("fnombres_auto.txt","w");
+	fclose(fnobres_auto);
 	int opcion,num_bots,opc_previa;
 	opcion = menu();
 	if (opcion == 5)
