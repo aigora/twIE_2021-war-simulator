@@ -227,7 +227,7 @@ int escribir_nombres(int num_nombres)
 	}
 }
 
-int manual_comlex(int num_bots)
+int manual_complex(int num_bots)
 {
 
 }
