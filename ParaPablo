@@ -226,3 +226,9 @@ int escribir_nombres(int num_nombres)
 		}
 	}
 }
+
+int manual_comlex(int num_bots)
+{
+
+}
+
