@@ -229,6 +229,8 @@ int escribir_nombres(int num_nombres)
 
 int manual_complex(int num_bots)
 {
+     FILE *fbot_vivos;
+     while (i<num_bots)
 
 }
 
