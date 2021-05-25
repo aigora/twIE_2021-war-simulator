@@ -29,6 +29,7 @@ int congelar_tiempo(int tiempo);
 int leer_nombres();
 int escribir_nombres(int num_nombres);
 int manual_simple(int num_bots);
+int manual_comple(int num_bots);
 int automatico_complex(int num_bots);
 
 int main()
@@ -329,6 +330,128 @@ int manual_simple(int num_bots)
 		congelar_tiempo(T);
 	}
 }
+
+
+
+int manual_complex(int num_bots)
+{
+  int num1,num2,num_muertes,i,bot_vivo,ii,ok; 
+  char bot1[30], bot2[30];
+	//Bots vivos irá disminuyendo a medida que vayan muriendo
+	//Bots total se mantendrá constante para que los vectores no den problemas
+	FILE *fbots_vivos;
+	FILE *fbajas_bots;
+	//Los bots restantes y sus respectivas bajas se almacenan en 2 ficheros
+	fbots_vivos = fopen("fbots_vivos.txt","w");
+	fbajas_bots = fopen("fbajas_bots.txt","w");
+	//num1 y num2 van siendo elegidos aleatoriamente por la función num_aleatorio y indican que 2 bots se enfrentan
+	num_muertes = 0;
+	const b = num_bots;	
+	bots bot[b];
+	for (i=0;i<num_bots;i++)
+	{
+		//Aquí se crean los bots
+		printf("Introduce nombre numero %i: ",i+1);
+		scanf("%30s", bot[i].nombre);
+		bot[i].kills = 0;
+		fprintf(fbots_vivos,"%s \n",bot[i].nombre);
+		fprintf(fbajas_bots,"0 \n");
+	}
+	fclose(fbots_vivos);
+	fclose(fbajas_bots);
+  for (i=0;i<num_bots-1;i++)
+	{
+		ok = 0;
+		while (ok == 0)
+		{
+			printf("Introduce el nombre del primer bot: ");
+			scanf("%s30", bot1);
+			for (ii=0;ii<num_bots-num_muertes;ii++)
+			{
+				if (strcmp(bot1,bot[ii].nombre) == 0)
+				{
+					num1 = ii;
+					ok = 1;
+					break;
+				}
+				if (ii == num_bots-num_muertes-1)
+				{
+					printf("Error, has metido un nombre no valido o que ya ha muerto. Vuelve a probar. \n");
+				}
+			}
+		}
+		ok = 0;
+		while (ok == 0)
+		{
+			printf("Introduce el nombre del segundo bot: ");
+			scanf("%30s",bot2);
+			for (ii=0;ii<num_bots-num_muertes;ii++)
+			{
+				if (strcmp(bot2,bot[ii].nombre) == 0)
+				{
+					num2 = ii;
+					ok = 1;
+					break;
+				}
+				if (ii == num_bots-num_muertes-1)
+				{
+					printf("Error, has metido un nombre no valido o que ya ha muerto. Vuelve a probar. \n");
+				}
+			}
+			while (1)
+			{
+				if (strcmp(bot1,bot2) == 0)
+				{
+					printf("Error, has metido 2 veces el mismo nombre. Vuelve a probar. \n");
+				}
+				else
+				{
+					break;
+				}
+				printf("Introduce el nombre del segundo bot: ");
+				scanf("%30s",bot2);
+			}
+		}
+		bot_vivo = kill(bot[num1],bot[num2]);
+		num_muertes += 1;
+		if (bot_vivo == 1)
+		{
+			bot[num1].kills += 1;
+			for (ii=0;ii<num_bots-num2;ii++)
+			{
+				strcpy(bot[num2+ii].nombre, bot[num2+ii+1].nombre);
+				bot[num2+ii].kills = bot[num2+ii+1].kills;
+			}
+		}
+		else
+		{
+			bot[num2].kills += 1;
+			for (ii=0;ii<num_bots-num1;ii++)
+			{
+				strcpy(bot[num1+ii].nombre, bot[num1+ii+1].nombre);
+				bot[num1+ii].kills = bot[num1+ii+1].kills;
+			}
+		}
+		fbots_vivos = fopen("fbots_vivos.txt","w");
+		fbajas_bots = fopen("fbajas_bots.txt","w");
+		printf("Bots restantes: ");
+		for (ii=0;ii<num_bots-num_muertes;ii++)
+		{
+			printf("%s, ",bot[ii].nombre);
+			fprintf(fbots_vivos,"%s \n",bot[ii].nombre);
+			fprintf(fbajas_bots,"%i \n",bot[ii].kills);
+		}
+		fclose(fbots_vivos);
+		fclose(fbajas_bots);
+		printf("\n");
+		if (i == num_bots-2)
+		{
+			printf("%s ha ganado con %d bajas",bot[0].nombre,bot[0].kills);
+		}
+	}
+}
+
+
 
 int automatico_complex(int num_bots)
 {
