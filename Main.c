@@ -82,7 +82,7 @@ int main()
 			manual_simple(num_bots);
 			break;
 		case 2:
-			//automatico_simple(num_bots);
+			automatico_simple(num_bots);
 			break;
 		case 3:
 			manual_complex(num_bots);
