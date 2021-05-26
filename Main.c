@@ -84,7 +84,7 @@ int main()
 			//automatico_simple(num_bots);
 			break;
 		case 3:
-			//manual_complex(num_bots);
+			manual_complex(num_bots);
 			break;
 		case 4:
 			automatico_complex(num_bots);
