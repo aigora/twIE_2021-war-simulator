@@ -32,6 +32,7 @@ int manual_simple(int num_bots);
 int automatico_simple(int num_bots);
 int manual_complex(int num_bots);
 int automatico_complex(int num_bots);
+int continuar_partida(int prev);
 
 int main()
 {
