@@ -333,6 +333,95 @@ int manual_simple(int num_bots)
 }
 
 //Introduces la función aquí
+int automatico_simple(int num_bots)
+{
+	FILE *fbots_vivos;
+	FILE *fbajas_bots;
+	FILE *fnombres_auto;
+
+	fbots_vivos = fopen("fbots_vivos.txt","w");
+	fbajas_bots = fopen("fbajas_bots.txt","w");
+	fnombres_auto = fopen("fnombres_auto.txt","r");
+}
+
+	int nivel,i=0,ii,ok,num_muertes,num1,num2,bot_vivo;
+	num_muertes = 0;
+	const b = num_bots;
+	bots bot[b];
+	while (i<num_bots)
+	{
+		fscanf(fnombres_auto, "%[^\n]\n", bot[i].nombre);
+		if (strcmp(bot[i].nombre,bot[0].nombre) == 0)
+		{
+			strcpy(bot[i].nombre, "Jackson");
+		}
+		fprintf(fbots_vivos,"%s \n", bot[i].nombre);
+		fprintf(fbajas_bots,"0 \n");
+		bot[i].kills = 0;
+		printf("%s \n",bot[i].nombre);
+		i++;
+	}
+	fclose(fnombres_auto);
+	fclose(fbajas_bots);
+	fclose(fbots_vivos);
+	//Este bucle va enfrentando los bots uno a uno hasta que solo quede uno(el ganador)
+	for (i=0;i<num_bots-1;i++)
+	{
+		num1 = num_aleatorio(num_bots-num_muertes);
+		num2 = num_aleatorio(num_bots-num_muertes);
+		//Para que num1 y num2 sean distintos
+		while (num1==num2)
+		{
+			num2 = num_aleatorio(num_bots-num_muertes);
+		}
+		//Se pasa la función kill con los bots elegidos aleatoriamente previamente
+		bot_vivo = kill(bot[num1-1],bot[num2-1]);
+		//bot_vivo es el numero del bot que ha ganado
+		num_muertes += 1;
+		if (bot_vivo == 1)
+		{
+			//Al haber ganado su bajas aumentan en +1
+			bot[num1-1].kills += 1;
+			//A continuación borramos de la lista al bot que ha muerto
+			//Para eso disminuimos en 1 la posición de todos los bots a partir del eliminado
+			for (ii=0;ii<num_bots-num2;ii++)
+			{
+				strcpy(bot[num2+ii-1].nombre, bot[num2+ii].nombre);
+				bot[num2+ii-1].kills = bot[num2+ii].kills;
+			}
+		}
+		else
+		{
+			bot[num2-1].kills += 1;
+			for (ii=0;ii<num_bots-num1;ii++)
+			{
+				strcpy(bot[num1+ii-1].nombre, bot[num1+ii].nombre);
+				bot[num1+ii-1].kills = bot[num1+ii].kills;
+			}
+		}
+		fbots_vivos = fopen("fbots_vivos.txt","w");
+		fbajas_bots = fopen("fbajas_bots.txt","w");
+		//Indicamos que bots siguen vivos
+		printf("Bots restantes: ");
+		for (ii=0;ii<num_bots-num_muertes;ii++)
+		{
+			printf("%s, ",bot[ii].nombre);
+			//Actualizamos la lista de bajas y de bots restantes
+			fprintf(fbots_vivos,"%s \n",bot[ii].nombre);
+			fprintf(fbajas_bots,"%i \n",bot[ii].kills);
+		}
+		fclose(fbots_vivos);
+		fclose(fbajas_bots);
+		printf("\n");
+		if (i == num_bots-2)
+		{
+			printf("%s ha ganado con %d bajas",bot[0].nombre,bot[0].kills);
+		}
+		//Congelamos el programa un tiempo T para que no se acabe instantáneamente
+		congelar_tiempo(T);
+	}
+}
+
 
 int manual_complex(int num_bots)
 {
