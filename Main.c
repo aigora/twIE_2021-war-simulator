@@ -342,7 +342,6 @@ int automatico_simple(int num_bots)
 	fbots_vivos = fopen("fbots_vivos.txt","w");
 	fbajas_bots = fopen("fbajas_bots.txt","w");
 	fnombres_auto = fopen("fnombres_auto.txt","r");
-}
 
 	int nivel,i=0,ii,ok,num_muertes,num1,num2,bot_vivo;
 	num_muertes = 0;
