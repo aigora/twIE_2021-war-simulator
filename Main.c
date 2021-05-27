@@ -14,12 +14,6 @@ typedef struct{
 	char nombre[30]; //Nombre y apellido
 	int kills; //Las bajas que lleva. Inicialmente son 0.
 }bots;
-//Estructura fechas:
-struct fecha{
-	int year; //Año
-	int mes;
-	int dia; 
-};
 
 int menu();
 int logo();
@@ -333,7 +327,6 @@ int manual_simple(int num_bots)
 	}
 }
 
-//Introduces la función aquí
 int automatico_simple(int num_bots)
 {
 	FILE *fbots_vivos;
