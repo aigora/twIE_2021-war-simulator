@@ -20,8 +20,6 @@ int logo();
 int num_aleatorio(int num);
 int kill(bots bot1, bots bot2);
 int congelar_tiempo(int tiempo);
-int leer_nombres();
-int escribir_nombres(int num_nombres);
 int manual_simple(int num_bots);
 int automatico_simple(int num_bots);
 int manual_complex(int num_bots);
@@ -201,52 +199,6 @@ int congelar_tiempo(int tiempo)
         ;
 }
 
-//Esta función lee los nombres de los bots vivivos restantes
-int leer_nombres()
-{
-	int i = 0;
-	bots nombres[N];
-	FILE *fbots_vivos;
-	fbots_vivos = fopen("fbots_vivos.txt", "r");
-	if (fbots_vivos == NULL)
-	{// Si el resultado es NULL mensaje de error
-		printf("Error al abrir el fichero.\n");
-		return -1;
-	}
-	else
-	{
-		printf("Bots vivos: \n");
-		while(fscanf(fbots_vivos, "%[^\n]\n", nombres[i].nombre) != EOF)
-		{
-		    printf("Nombre %i: %s\n", i+1, nombres[i].nombre);
-		    i++;
-		}
-	}
-}
-
-//Esta función pregunta al usuario los nombres que quiere introducir y los copia en un fichero
-int escribir_nombres(int num_nombres)
-{
-	int i;
-	const b = num_nombres;
-	bots nombres[b];
-	FILE *fnombres_introducidos;
-	fnombres_introducidos = fopen("fnombres_introducidos.txt","w");
-	if (fnombres_introducidos == NULL)
-	{
-		printf("Error al abrir el fichero.\n");
-		return -1;
-	}
-	else
-	{
-		for (i=0;i<num_nombres;i++)
-		{
-			printf("Introduce nombre %i: ",i+1);
-			scanf("%s",&nombres[i].nombre);
-			fprintf(fnombres_introducidos,"%s \n",nombres[i].nombre);
-		}
-	}
-}
 
 //La función de la primera opción
 int manual_simple(int num_bots)
