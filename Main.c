@@ -37,6 +37,11 @@ int main()
 	if (opcion == 5)
 	{
 		fopcion = fopen("fopcion.txt","r");
+		if (fopcion == NULL)
+		{
+			printf("Error al abrir fichero.");
+			exit(-1);
+		}
 		fscanf(fopcion,"%i",&opc_previa);
 		fclose(fopcion);
 		continuar_partida(opc_previa);
