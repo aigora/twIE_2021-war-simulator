@@ -6,7 +6,7 @@ Consiste en realizar un programa al que tu le metes el número de participantes 
 
 
 Nombre y apellidos:Daniel Garcia Arana; @DanielGarciaArana
-Nombre y apellidos:Pablo Iglesias Caballero; Usuario Github: ?
+Nombre y apellidos:Pablo Iglesias Caballero; Usuario Github: iglesiascaballeropablo
 Nombre y apellidos:Carlos Mirón Diaz; Usuario Github: Miron29.
 
 
